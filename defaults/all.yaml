@@ -1,3 +1,0 @@
----
-kvm_addr: 'qemu:///system'
-enable_spice: true
