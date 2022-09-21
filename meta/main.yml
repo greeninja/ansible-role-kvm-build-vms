@@ -1,1 +1,7 @@
 ---
+galaxy_info:
+  role_name: build-vms
+  author: greeninja
+  description: Simple role for defining KVM VMs
+  galaxy_tags: []
+  dependencies: []

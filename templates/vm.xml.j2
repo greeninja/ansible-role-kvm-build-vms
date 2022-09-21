@@ -36,12 +36,21 @@
       <source file='{{os_path}}/{{ inventory_hostname_short }}.qcow2'/>
       <target dev='vda' bus='virtio'/>
     </disk>
+    {% if coreos_iso is defined and coreos is defined %}
+    <disk type='file' device='cdrom'>
+      <driver name='qemu' type='raw'/>
+      <source file='{{ coreos_iso }}'/>
+      <target dev='sda' bus='sata'/>
+      <readonly/>
+    </disk>
+    {% else %}
     <disk type='file' device='cdrom'>
       <driver name='qemu' type='raw'/>
       <source file='{{os_path}}/{{ inventory_hostname_short }}-cloudinit.iso'/>
       <target dev='sda' bus='sata'/>
       <readonly/>
     </disk>
+    {% end %}
     {% if extra_disks is defined %}
     {% for disk in extra_disk_paths %}
     <disk type='file' device='disk'>
